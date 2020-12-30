@@ -2,7 +2,7 @@ import React from "react";
 import styles from "../styles/Home.module.css";
 import { MainTitle, Card } from "../components";
 
-import { items } from "./fake-data";
+import { items } from "../pages/fake-data";
 
 const FAKE_DATA = {
   topic: "Economy",
