@@ -1,0 +1,40 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  height: 350px;
+  background-color: #e5e5e5;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+@media (max-width: 600px) {
+  .card {
+    min-width: 200px;
+  }
+}
+
+.card:hover {
+  box-shadow: 0 4px 15px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.img {
+  flex: 2;
+  padding: 5px;
+  border-radius: 20px 20px 0 0;
+  color: black;
+  width: auto;
+  max-height: 250px;
+}
+
+.bottom {
+  flex: 1;
+  background-color: white;
+  color: black;
+  border-radius: 0 0 20px 20px;
+}
+
+.title {
+  padding: 20px;
+  font-weight: 600;
+}
