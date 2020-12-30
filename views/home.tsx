@@ -2,14 +2,14 @@ import React from "react";
 import styles from "../styles/Home.module.css";
 import { MainTitle, Card } from "../components";
 
-import { items } from "../pages/fake-data";
+import { items } from "./fake-data";
 
 const FAKE_DATA = {
   topic: "Economy",
   subtitle: "",
   items,
 };
-const Home = () => {
+const index = () => {
   return (
     <section className={styles.container}>
       <div className={styles.topics}>
@@ -68,4 +68,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default index;
