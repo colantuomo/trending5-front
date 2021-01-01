@@ -3,6 +3,7 @@ import styles from "../styles/Home.module.css";
 import { MainTitle, Card } from "../components";
 
 import { items } from "./fake-data";
+import FAKEDATA from "../fake-data.json";
 
 const FAKE_DATA = {
   topic: "Economy",
@@ -10,60 +11,24 @@ const FAKE_DATA = {
   items,
 };
 const index = () => {
+  // console.log(FAKEDATA);
   return (
     <section className={styles.container}>
-      <div className={styles.topics}>
-        <MainTitle title="Economy" />
-        <div className={styles.cardlist}>
-          {FAKE_DATA.items.map((item) => (
-            <Card
-              link={item.link}
-              key={item.id}
-              title={item.title}
-              img={item.link}
-            />
-          ))}
+      {FAKEDATA.map((x) => (
+        <div className={styles.topics}>
+          <MainTitle title={x.crawler} subtitle={x.topic} />
+          <div className={styles.cardlist}>
+            {x.items.map((item) => (
+              <Card
+                link={item.link}
+                key={item.id}
+                title={item.title}
+                img={item.img}
+              />
+            ))}
+          </div>
         </div>
-      </div>
-      <div className={styles.topics}>
-        <MainTitle title="Youtube" subtitle={FAKE_DATA.subtitle} />
-        <div className={styles.cardlist}>
-          {FAKE_DATA.items.map((item) => (
-            <Card
-              link={item.link}
-              key={item.id}
-              title={item.title}
-              img={item.link}
-            />
-          ))}
-        </div>
-      </div>
-      <div className={styles.topics}>
-        <MainTitle title="Tech" subtitle={FAKE_DATA.subtitle} />
-        <div className={styles.cardlist}>
-          {FAKE_DATA.items.map((item) => (
-            <Card
-              link={item.link}
-              key={item.id}
-              title={item.title}
-              img={item.link}
-            />
-          ))}
-        </div>
-      </div>
-      <div className={styles.topics}>
-        <MainTitle title="Development" subtitle={FAKE_DATA.subtitle} />
-        <div className={styles.cardlist}>
-          {FAKE_DATA.items.map((item) => (
-            <Card
-              link={item.link}
-              key={item.id}
-              title={item.title}
-              img={item.link}
-            />
-          ))}
-        </div>
-      </div>
+      ))}
     </section>
   );
 };
