@@ -18,7 +18,7 @@ const index = () => {
         <div className={styles.topics}>
           <MainTitle title={x.crawler} subtitle={x.topic} />
           <div className={styles.cardlist}>
-            {x.items.map((item) => (
+            {(x.items as []).map((item: any) => (
               <Card
                 link={item.link}
                 key={item.id}
