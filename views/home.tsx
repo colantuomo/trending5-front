@@ -11,7 +11,6 @@ const FAKE_DATA = {
   items,
 };
 const index = () => {
-  // console.log(FAKEDATA);
   return (
     <section className={styles.container}>
       {FAKEDATA.map((x) => (
