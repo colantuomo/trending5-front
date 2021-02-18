@@ -3,7 +3,7 @@
   flex-direction: column;
   height: 280px;
   background-color: white;
-  border-radius: 20px;
+  border-radius: 5px;
   cursor: pointer;
   transition: 0.2s;
   width: 200px;
@@ -21,7 +21,7 @@
 
 .img {
   flex: 2;
-  border-radius: 20px 20px 0 0;
+  border-radius: 5px 5px 0 0;
   color: black;
   max-width: 100%;
   max-height: 110px;
@@ -32,7 +32,7 @@
   flex: 1;
   background-color: white;
   color: black;
-  border-radius: 0 0 20px 20px;
+  border-radius: 0 0 5px 5px;
 }
 
 .title {
