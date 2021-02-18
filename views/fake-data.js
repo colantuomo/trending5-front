@@ -1,4 +1,4 @@
-export const items = [
+const items = [
   {
     title:
       "Bolsonaro diz que vai assinar MP com salário mínimo de R$ 1.100 em 2021",
@@ -39,3 +39,11 @@ export const items = [
       "https://g1.globo.com/economia/noticia/2020/12/30/sem-mais-subsidios-contra-pandemia-brasileiros-se-aproximam-de-abismo-em-2021.ghtml",
   },
 ];
+
+const crawler = {
+  crawler: "Youtube",
+  topic: "Economy",
+  items,
+};
+
+export const crawlers = [crawler];

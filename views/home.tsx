@@ -1,26 +1,27 @@
 import React from "react";
+import useSwr from "swr";
+
 import styles from "../styles/Home.module.css";
 import { MainTitle, Card } from "../components";
 
-import { items } from "./fake-data";
-import FAKEDATA from "../fake-data.json";
-
-const FAKE_DATA = {
-  topic: "Economy",
-  subtitle: "",
-  items,
-};
 const index = () => {
+  const fetcher = async (url: string) => {
+    return await (await fetch(url)).json();
+  };
+  const { data, error } = useSwr("/api/crawler", fetcher);
+  console.log(data);
+  // fetch(`${window.location.href}`)
+
   return (
     <section className={styles.container}>
-      {FAKEDATA.map((x) => (
-        <div className={styles.topics}>
+      {data?.map((x) => (
+        <div key={x._id} className={styles.topics}>
           <MainTitle title={x.crawler} subtitle={x.topic} />
           <div className={styles.cardlist}>
             {(x.items as []).map((item: any) => (
               <Card
                 link={item.link}
-                key={item.id}
+                key={item._id}
                 title={item.title}
                 img={item.img}
               />
