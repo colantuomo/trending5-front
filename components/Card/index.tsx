@@ -5,9 +5,10 @@ interface Props {
   img: string;
   title: string;
   link: string;
+  description?: string;
 }
 
-const Card = ({ title, img, link }: Props) => {
+const Card = ({ title, img, link, description }: Props) => {
   const altName = (title: string) => title.slice(0, 30);
   const onNavigate = () => {
     window.open(link, "__blank");
@@ -16,7 +17,8 @@ const Card = ({ title, img, link }: Props) => {
     <div className={styles.card} onClick={onNavigate}>
       <img className={styles.img} src={img} alt={altName(title)} />
       <div className={styles.bottom}>
-        <div className={styles.title}>{title}.</div>
+        <h2 className={styles.title}>{title}</h2>
+        <p className={styles.description}>{description}</p>
       </div>
     </div>
   );

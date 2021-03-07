@@ -6,11 +6,11 @@
   color: #e4ed82;
 }
 
-.h1-economy {
+.h1-g1 {
   color: #06d6a0;
 }
 
-.h1-development {
+.h1-github {
   color: #118ab2;
 }
 
@@ -25,4 +25,5 @@
 .p {
   margin: 0;
   padding-left: 3px;
+  text-transform: capitalize;
 }

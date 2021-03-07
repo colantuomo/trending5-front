@@ -1,43 +1,28 @@
 .card {
-  display: flex;
-  flex-direction: column;
-  height: 280px;
-  background-color: white;
-  border-radius: 5px;
+  width: 250px;
+  height: 50px;
+  font-size: 10px;
   cursor: pointer;
-  transition: 0.2s;
-  width: 200px;
+}
+
+.img {
+  max-width: 100%;
+  max-height: 150px;
+}
+
+.title {
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.description {
+  font-weight: 100;
+  font-size: 14px;
 }
 
 @media (max-width: 600px) {
   .card {
     min-width: 200px;
+    height: 390px;
   }
-}
-
-.card:hover {
-  box-shadow: 0 4px 15px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-}
-
-.img {
-  flex: 2;
-  border-radius: 5px 5px 0 0;
-  color: black;
-  max-width: 100%;
-  max-height: 110px;
-  align-self: center;
-}
-
-.bottom {
-  flex: 1;
-  background-color: white;
-  color: black;
-  border-radius: 0 0 5px 5px;
-}
-
-.title {
-  padding: 20px;
-  font-weight: 600;
-  font-size: 0.8rem;
-  word-break: break-all;
 }

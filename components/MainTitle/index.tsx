@@ -7,6 +7,7 @@ interface Props {
 }
 
 const MainTitle = ({ title, subtitle }: Props) => {
+  console.log(title)
   return (
     <section className={styles.container}>
       <h1 className={styles[`h1-${title.toLowerCase()}`]}>{title}</h1>
