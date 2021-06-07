@@ -1,19 +1,23 @@
 import { createGlobalStyle } from "styled-components";
 
 export default createGlobalStyle`
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
   html,
   body {
-    background-color: #505050;
+    height: 100%;
     color: white;
-    padding: 0;
-    margin: 0;
+    background-color: #505050;
     font-family: "Montserrat", sans-serif;
   }
 
   h1 {
     font-size: 3rem;
     font-weight: 700;
-    margin: 0;
   }
 
   p {
@@ -23,9 +27,5 @@ export default createGlobalStyle`
   a {
     color: inherit;
     text-decoration: none;
-  }
-
-  * {
-    box-sizing: border-box;
   }
 `;
