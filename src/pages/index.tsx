@@ -8,11 +8,11 @@ import { CardList, HomeWrapper } from "../styles/pages/Home";
 export default function Home({ topics }: Props) {
   return (
     <HomeWrapper>
-      {topics?.map((x) => (
-        <div key={x._id}>
-          <MainTitle title={x.crawler} subtitle={x.topic} />
+      {topics?.map((topic) => (
+        <div key={topic._id}>
+          <MainTitle title={topic.crawler} subtitle={topic.topic} />
           <CardList>
-            {(x?.items).map((item) => (
+            {topic?.items.map((item) => (
               <Card
                 link={item.link}
                 key={item._id}
@@ -28,11 +28,12 @@ export default function Home({ topics }: Props) {
   );
 }
 
-export const getStaticProps: GetStaticProps<Props> = async (context) => {
-  connect(process.env.MONGODB_URI, {
+export const getStaticProps: GetStaticProps<Props> = async () => {
+  await connect(process.env.MONGODB_URI, {
     useUnifiedTopology: true,
     useNewUrlParser: true,
-  }).then((_) => console.log("connected"));
+  });
+  console.log("connected");
   const ONE_HOUR = 60 * 60;
   const topics = JSON.parse(
     JSON.stringify(await TopicsModel.find())
