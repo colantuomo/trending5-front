@@ -1,19 +1,15 @@
-import React from "react";
-import styles from "../MainTitle/main-title.module.css";
+import { MainTitleWrapper } from "./styles";
 
 interface Props {
   title: string;
   subtitle?: string;
 }
 
-const MainTitle = ({ title, subtitle }: Props) => {
-  console.log(title)
+export const MainTitle = ({ title, subtitle }: Props) => {
   return (
-    <section className={styles.container}>
-      <h1 className={styles[`h1-${title.toLowerCase()}`]}>{title}</h1>
-      <p className={styles.p}>{subtitle}</p>
-    </section>
+    <MainTitleWrapper>
+      <h1 className={`h1-${title.toLowerCase()}`}>{title}</h1>
+      <p>{subtitle}</p>
+    </MainTitleWrapper>
   );
 };
-
-export { MainTitle };

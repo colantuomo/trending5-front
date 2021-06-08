@@ -1,6 +1,4 @@
-import React from "react";
-import styles from "../Card/card.module.css";
-
+import { CardWrapper } from "./styles";
 interface Props {
   img: string;
   title: string;
@@ -8,20 +6,14 @@ interface Props {
   description?: string;
 }
 
-const Card = ({ title, img, link, description }: Props) => {
-  const altName = (title: string) => title.slice(0, 30);
-  const onNavigate = () => {
-    window.open(link, "__blank");
-  };
+export const Card = ({ title, img, link, description }: Props) => {
   return (
-    <div className={styles.card} onClick={onNavigate}>
-      <img className={styles.img} src={img} alt={altName(title)} />
-      <div className={styles.bottom}>
-        <h2 className={styles.title}>{title}</h2>
-        <p className={styles.description}>{description}</p>
+    <CardWrapper href={link} target="_blank">
+      <img src={img} alt={title.slice(0, 30)} />
+      <div>
+        <h2>{title}</h2>
+        <p>{description}</p>
       </div>
-    </div>
+    </CardWrapper>
   );
 };
-
-export { Card };
