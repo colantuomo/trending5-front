@@ -1,26 +1,18 @@
-import chrome from "chrome-aws-lambda";
+import os from "os";
+import download from "download-chromium";
 import puppeteer, { Page, Browser } from "puppeteer-core";
 
-const chromeExecPaths = {
-  win32: "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe",
-  linux: "/usr/bin/google-chrome",
-  darwin: "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
-};
-
 async function getOptions() {
-  const isDev = !process.env.AWS_REGION;
-  const exePath = chromeExecPaths[process.platform];
-  return isDev
-    ? {
-        args: [],
-        headless: true,
-        executablePath: exePath,
-      }
-    : {
-        args: chrome.args,
-        headless: chrome.headless,
-        executablePath: await chrome.executablePath,
-      };
+  const execPath = await download({
+    revision: 694644,
+    installPath: `${os.tmpdir()}/.local-chromium`,
+  });
+
+  return {
+    args: [],
+    headless: true,
+    executablePath: execPath,
+  };
 }
 
 let browser: Browser | undefined;
