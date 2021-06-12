@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "postinstall": "playwright install; echo FIM"
+    "postinstall": "node node_modules/playwright/install.js"
   },
   "dependencies": {
     "mongoose": "^5.11.17",
