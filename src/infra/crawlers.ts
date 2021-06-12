@@ -1,5 +1,7 @@
 import { getBrowser, newPage } from "./getBrowser";
+import debug from "debug";
 
+const log = debug("crawler");
 interface DefaultData {
   title: string;
   description?: string;
@@ -18,32 +20,23 @@ export interface Topic<T = DefaultData> {
   items: T[];
 }
 
-async function g1Economy(): Promise<Topic> {
+async function g1Economy() {
   const page = await newPage();
   await page.goto("https://g1.globo.com/economia/");
-  const header = await page.$$eval(".feed-post-body-title ._b a", (el) =>
-    el
-      .map((x) => {
-        return { title: x.textContent.trim(), link: x.getAttribute("href") };
-      })
-      .slice(0, 5)
-  );
-  const descriptions = await page.$$eval(".feed-post-body-resumo", (el) =>
-    el.map((x) => x.textContent.trim())
-  );
-  const imgs = await page.$$eval(".feed-media-wrapper img", (el) =>
-    el.map((x) => x.getAttribute("src")).slice(0, 5)
-  );
 
-  const data = header.map(({ title, link }, idx) => {
-    const description = descriptions[idx];
-    const img = imgs[idx];
-    return { title, description, link, img };
-  });
   return {
     crawler: "G1",
     topic: "economy",
-    items: data,
+    items: await page.$$eval(
+      ".feed-post.bstn-item-shape.type-materia",
+      (posts) =>
+        posts.slice(0, 5).map((post) => ({
+          image: post.querySelector("img").src,
+          title: post.querySelector("a").innerText,
+          link: post.querySelector("a").href,
+          description: post.querySelector(".feed-post-body-resumo").textContent,
+        }))
+    ),
   };
 }
 
@@ -69,8 +62,9 @@ async function githubTrendings(): Promise<Topic<GithubTrending>> {
     const description = details[idx];
     const language = languages[idx] ?? "";
     const star = stars[idx] ?? "";
-    const img =
-      "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png";
+    // const img =
+    //   "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png";
+    const img = `https://github.com/${title.split("/")[1]}.png`;
     const link = `https://github.com/${title}`;
     return { title, description, language, stars: star, img, link };
   });
@@ -83,7 +77,8 @@ async function githubTrendings(): Promise<Topic<GithubTrending>> {
 
 async function youtubeTrendings(): Promise<Topic> {
   const page = await newPage();
-  await page.goto(`https://www.youtube.com/feed/trending`);
+  await page.goto("https://www.youtube.com/feed/trending?persist_gl=1&gl=BR");
+  // await page.goto("https://www.youtube.com/feed/trending?persist_gl=1&gl=US");
   const trendingVideos = await page.$$eval(
     ".style-scope .ytd-expanded-shelf-contents-renderer .text-wrapper #title-wrapper a",
     (el) =>
@@ -113,6 +108,7 @@ async function youtubeTrendings(): Promise<Topic> {
 }
 
 export async function getCrawlersTopics() {
+  log("Rodando crawlers");
   const browser = await getBrowser();
   const response = await Promise.all([
     githubTrendings(),
