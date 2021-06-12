@@ -1,5 +1,5 @@
 import chrome from "chrome-aws-lambda";
-import puppeteer, { Page, Browser } from "puppeteer-core";
+import puppeteer, { Page, Browser } from "puppeteer";
 
 const chromeExecPaths = {
   win32: "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe",
@@ -26,10 +26,10 @@ async function getOptions() {
 let browser: Browser | undefined;
 
 export async function getBrowser() {
-  const options = await getOptions();
+  // const options = await getOptions();
 
   if (!browser) {
-    browser = await puppeteer.launch(options);
+    browser = await puppeteer.launch({ headless: true });
   }
   return browser;
 }
