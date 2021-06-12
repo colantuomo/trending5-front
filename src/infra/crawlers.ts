@@ -20,7 +20,7 @@ export interface Topic<T = DefaultData> {
   items: T[];
 }
 
-async function g1Economy() {
+async function g1Economy(): Promise<Topic> {
   const page = await newPage();
   await page.goto("https://g1.globo.com/economia/");
 
@@ -31,7 +31,7 @@ async function g1Economy() {
       ".feed-post.bstn-item-shape.type-materia",
       (posts) =>
         posts.slice(0, 5).map((post) => ({
-          image: post.querySelector("img").src,
+          img: post.querySelector("img").src,
           title: post.querySelector("a").innerText,
           link: post.querySelector("a").href,
           description: post.querySelector(".feed-post-body-resumo").textContent,
