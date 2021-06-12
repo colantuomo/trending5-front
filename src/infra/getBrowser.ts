@@ -3,7 +3,7 @@ import playwright, { Browser, Page } from "playwright";
 let browser: Browser | undefined;
 
 export async function getBrowser() {
-  if (!browser) {
+  if (!browser || !browser.isConnected()) {
     browser = await playwright.chromium.launch({ headless: true });
   }
   return browser;
