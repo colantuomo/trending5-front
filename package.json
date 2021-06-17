@@ -6,7 +6,7 @@
     "dev": "DEBUG=crawler next dev",
     "build": "next build",
     "start": "next start",
-    "postinstall": "node node_modules/playwright/install.js"
+    "postinstall": "node node_modules/playwright/install.js && cp -r $HOME/.cache/ms-playwright ./node_modules/"
   },
   "dependencies": {
     "mongoose": "^5.11.17",

@@ -8,7 +8,12 @@ let browser: Browser | undefined;
 export async function getBrowser() {
   if (!browser || !browser.isConnected()) {
     log("Novo browser");
-    browser = await playwright.chromium.launch({ headless: true });
+    const executablePath =
+      "node_modules/ms-playwright/chromium-888113/chrome-linux/chrome";
+    browser = await playwright.chromium.launch({
+      headless: true,
+      executablePath,
+    });
   }
   return browser;
 }
