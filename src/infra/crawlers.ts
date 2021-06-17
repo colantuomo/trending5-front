@@ -108,12 +108,14 @@ async function youtubeTrendings(): Promise<Topic> {
 }
 
 export async function getCrawlersTopics() {
+  log("Instalando playwright");
+  await import("playwright/install");
   log("Rodando crawlers");
   const browser = await getBrowser();
   const response = await Promise.all([
     githubTrendings(),
     youtubeTrendings(),
-    g1Economy(),
+    // g1Economy(),
   ]);
   await browser.close();
   return response;
