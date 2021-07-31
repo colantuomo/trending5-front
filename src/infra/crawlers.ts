@@ -99,9 +99,9 @@ async function youtubeTrendings(): Promise<Topic> {
           const part1 =
             contents[0].itemSectionRenderer.contents[0].shelfRenderer.content
               .expandedShelfContentsRenderer.items;
-          const part2 =
-            contents[2].itemSectionRenderer.contents[0].shelfRenderer.content
-              .expandedShelfContentsRenderer.items;
+          const part2 = (contents[2] ?? contents[1])?.itemSectionRenderer
+            .contents[0].shelfRenderer.content.expandedShelfContentsRenderer
+            .items;
           const firstFive = part1
             .concat(part2)
             .slice(0, 5)
