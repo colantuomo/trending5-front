@@ -1,6 +1,8 @@
 import axios from "axios";
 import cheerio from "cheerio";
+import debug from "debug";
 
+const log = debug("crawler");
 interface DefaultData {
   title: string;
   description?: string;
@@ -54,7 +56,7 @@ async function githubTrendings(): Promise<Topic<GithubTrending>> {
       const querySelector = cheerio.load(link);
       const title = querySelector(".lh-condensed a").attr("href").substr(1);
       items.push({
-        title,
+        title: title.substr(1),
         description: querySelector("p").text().trim(),
         language: querySelector("[itemprop=programmingLanguage]").text(),
         stars: Number(
@@ -63,7 +65,7 @@ async function githubTrendings(): Promise<Topic<GithubTrending>> {
             .trim()
             .replace(",", ".")
         ),
-        img: `https://github.com/${title.split("/")[1]}.png`,
+        img: `https://github.com/${title.split("/")[0]}.png`,
         link: `https://github.com/${title}`,
       });
     });
@@ -134,7 +136,7 @@ async function youtubeTrendings(): Promise<Topic> {
 export async function getCrawlersTopics() {
   const response = await Promise.all([
     githubTrendings(),
-    youtubeTrendings(),
+    // youtubeTrendings(),
     g1Economy(),
   ]);
   return response;
