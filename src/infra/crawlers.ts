@@ -134,10 +134,14 @@ async function youtubeTrendings(): Promise<Topic> {
 }
 
 export async function getCrawlersTopics() {
-  const response = await Promise.all([
+  const response = await Promise.allSettled([
     githubTrendings(),
-    // youtubeTrendings(),
+    youtubeTrendings(),
     g1Economy(),
-  ]);
+  ]).then((results) => {
+    return results
+      .map((result) => (result.status === "fulfilled" ? result.value : false))
+      .filter(Boolean);
+  });
   return response;
 }
