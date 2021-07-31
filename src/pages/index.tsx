@@ -4,7 +4,8 @@ import { MainTitle, Card } from "../components";
 import { CardList, HomeWrapper } from "../styles/pages/Home";
 import { getCrawlersTopics, Topic } from "../infra/crawlers";
 
-export default function Home({ topics }: Props) {
+export default function Home({ topics, updatedAt }: Props) {
+  console.log({ updatedAt });
   return (
     <HomeWrapper>
       {topics?.map((topic, index) => (
@@ -33,6 +34,7 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
   return {
     props: {
       topics,
+      updatedAt: new Date().toJSON(),
     },
     revalidate: ONE_MINUTE * 10,
   };
@@ -40,4 +42,5 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
 
 interface Props {
   topics: Topic[];
+  updatedAt: string;
 }
