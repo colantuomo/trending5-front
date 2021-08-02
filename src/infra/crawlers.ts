@@ -89,7 +89,7 @@ async function youtubeTrendings(): Promise<Topic> {
         const variable = "var ytInitialData = ";
         if (scriptHtml.includes(variable)) {
           const indexStart = scriptHtml.indexOf(variable) + variable.length;
-          const indexEnd = scriptHtml.indexOf(";", indexStart);
+          const indexEnd = scriptHtml.indexOf(";</script>", indexStart);
           const ytInitialData = JSON.parse(
             scriptHtml.substr(indexStart, indexEnd - indexStart)
           );
@@ -120,7 +120,7 @@ async function youtubeTrendings(): Promise<Topic> {
                 youtubeBaseURL +
                 item.longBylineText.runs[0].navigationEndpoint.commandMetadata
                   .webCommandMetadata.url,
-              description: item.descriptionSnippet.runs[0].text,
+              description: item.descriptionSnippet?.runs[0].text ?? "",
             });
           });
         }
