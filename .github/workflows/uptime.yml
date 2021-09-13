@@ -1,0 +1,13 @@
+name: "Updates Trending5 every 6th hour "
+on:
+  schedule:
+  - cron: "0 */6 * * *"
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+    - name: curl
+      uses: wei/curl@master
+      with:
+        args: -L https://trending5-front.colantuomo.vercel.app
