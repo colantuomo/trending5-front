@@ -30,13 +30,14 @@ export default function Home({ topics, updatedAt }: Props) {
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
   const ONE_MINUTE = 60;
+  const ONE_HOUR = ONE_MINUTE * 60;
   const topics = await getCrawlersTopics();
   return {
     props: {
       topics,
       updatedAt: new Date().toJSON(),
     },
-    revalidate: ONE_MINUTE * 10,
+    revalidate: ONE_HOUR * 3,
   };
 };
 
