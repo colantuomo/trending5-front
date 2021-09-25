@@ -56,7 +56,7 @@ async function githubTrendings(): Promise<Topic<GithubTrending>> {
       const querySelector = cheerio.load(link);
       const title = querySelector(".lh-condensed a").attr("href").substr(1);
       items.push({
-        title: title.substr(1),
+        title: title,
         description: querySelector("p").text().trim(),
         language: querySelector("[itemprop=programmingLanguage]").text(),
         stars: Number(
