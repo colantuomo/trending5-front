@@ -10,7 +10,6 @@ export default createGlobalStyle`
   html,
   body {
     height: 100%;
-    /* color: white; */
     background-color: white;
     font-family: "Montserrat", sans-serif;
   }
