@@ -7,5 +7,8 @@
     "test": "exit 0"
   },
   "author": "colantuomo",
-  "license": "ISC"
+  "license": "ISC",
+  "publishConfig": {
+    "@colantuomo:registry": "https://npm.pkg.github.com"
+  }
 }
