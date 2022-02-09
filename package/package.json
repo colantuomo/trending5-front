@@ -1,0 +1,14 @@
+{
+  "name": "@colantuomo/trending5-types",
+  "version": "1.0.0",
+  "description": "Package with TS types",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "exit 0"
+  },
+  "author": "colantuomo",
+  "license": "ISC",
+  "publishConfig": {
+    "@colantuomo:registry": "https://npm.pkg.github.com"
+  }
+}
