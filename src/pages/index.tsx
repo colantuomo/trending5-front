@@ -1,30 +1,24 @@
 import { GetStaticProps } from "next";
 
-import { MainTitle, Card } from "../components";
-import { CardList, HomeWrapper } from "../styles/pages/Home";
+import { Header, TopicsBar, InfoCard } from "../components";
+import { HomeWrapper } from "../styles/pages/Home";
 import { getCrawlersTopics, Topic } from "../infra/crawlers";
 
 export default function Home({ topics, updatedAt }: Props) {
   console.log({ updatedAt });
+  // TODO: Add a specific page for every crawler
   return (
-    <HomeWrapper>
-      {topics?.map((topic, index) => (
-        <div key={index}>
-          <MainTitle title={topic.crawler} subtitle={topic.topic} />
-          <CardList>
-            {topic?.items.map((item, itemIndex) => (
-              <Card
-                link={item.link}
-                key={itemIndex}
-                title={item.title}
-                img={item.img}
-                description={item.description}
-              />
-            ))}
-          </CardList>
-        </div>
-      ))}
-    </HomeWrapper>
+    <>
+      <Header />
+      <TopicsBar topics={topics.map(({ crawler }) => crawler)} />
+      <HomeWrapper>
+        {topics.map(({ topic, items }, index) =>
+          items.map(({ title, description, link, img }) => (
+            <InfoCard imageSrc={img} title={title} description={description} />
+          ))
+        )}
+      </HomeWrapper>
+    </>
   );
 }
 
