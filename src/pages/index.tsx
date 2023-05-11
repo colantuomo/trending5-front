@@ -4,6 +4,14 @@ import { MainTitle, Card } from "../components";
 import { CardList, HomeWrapper } from "../styles/pages/Home";
 import { getCrawlersTopics, Topic } from "../infra/crawlers";
 
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      [elemName: string]: any;
+    }
+  }
+}
+
 export default function Home({ topics, updatedAt }: Props) {
   console.log({ updatedAt });
   return (
@@ -32,6 +40,17 @@ export default function Home({ topics, updatedAt }: Props) {
           ></ins>
         </div>
       ))}
+      <amp-ad
+        width="100vw"
+        height="320"
+        type="adsense"
+        data-ad-client="ca-pub-2633828768948445"
+        data-ad-slot="2250421838"
+        data-auto-format="rspv"
+        data-full-width=""
+      >
+        <div></div>
+      </amp-ad>
     </HomeWrapper>
   );
 }

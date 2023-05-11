@@ -50,11 +50,11 @@ export default class MyDocument extends Document {
             async
             crossOrigin="anonymous"
           />
-          {/* <script
+          <Script
+            src="https://cdn.ampproject.org/v0/amp-ad-0.1.js"
             async
             custom-element="amp-ad"
-            src="https://cdn.ampproject.org/v0/amp-ad-0.1.js"
-          ></script> */}
+          />
         </Head>
         <body>
           <Main />
