@@ -22,6 +22,15 @@ export default function Home({ topics, updatedAt }: Props) {
               />
             ))}
           </CardList>
+          <ins
+            className="adsbygoogle"
+            style={{ display: "block" }}
+            data-ad-client="ca-pub-2633828768948445"
+            data-ad-slot="2250421838"
+            data-ad-format="auto"
+            data-full-width-responsive="true"
+          ></ins>
+          <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
         </div>
       ))}
     </HomeWrapper>

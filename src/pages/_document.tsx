@@ -5,6 +5,8 @@ import Document, {
   NextScript,
   DocumentContext,
 } from "next/document";
+import Script from "next/script";
+
 import { ServerStyleSheet } from "styled-components";
 
 export default class MyDocument extends Document {
@@ -43,15 +45,25 @@ export default class MyDocument extends Document {
             rel="stylesheet"
             href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;600;700&display=swap"
           />
+          <Script
+            src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2633828768948445"
+            async
+            crossOrigin="anonymous"
+          />
           <script
             async
-            src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2633828768948445"
-            crossOrigin="anonymous"
+            custom-element="amp-ad"
+            src="https://cdn.ampproject.org/v0/amp-ad-0.1.js"
           ></script>
         </Head>
         <body>
           <Main />
           <NextScript />
+          <Script
+            src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2633828768948445"
+            async
+            crossOrigin="anonymous"
+          />
         </body>
       </Html>
     );
