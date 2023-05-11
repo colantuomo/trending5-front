@@ -1,4 +1,5 @@
 import Head from "next/head";
+import { Analytics } from "@vercel/analytics/react";
 import Global from "../styles/Global";
 
 export default function MyApp({ Component, pageProps }) {
@@ -10,6 +11,7 @@ export default function MyApp({ Component, pageProps }) {
       </Head>
       <Global />
       <Component {...pageProps} />
+      <Analytics />
     </>
   );
 }
