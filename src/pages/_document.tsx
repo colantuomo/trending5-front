@@ -50,11 +50,11 @@ export default class MyDocument extends Document {
             async
             crossOrigin="anonymous"
           />
-          <script
+          {/* <script
             async
             custom-element="amp-ad"
             src="https://cdn.ampproject.org/v0/amp-ad-0.1.js"
-          ></script>
+          ></script> */}
         </Head>
         <body>
           <Main />
@@ -64,6 +64,7 @@ export default class MyDocument extends Document {
             async
             crossOrigin="anonymous"
           />
+          <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
         </body>
       </Html>
     );
